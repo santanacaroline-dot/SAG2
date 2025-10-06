@@ -20,13 +20,76 @@
         #welcome.hide {
             display: none;
         }
+        #auth-container {
+            display: none; /* Inicialmente escondido */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #auth-container.active {
+            display: flex; /* Mostra o container de autenticação quando ativo */
+        }
+        form {
+           margin: 10px;
+           padding: 20px;
+           border: 1px solid #ccc;
+           border-radius: 8px;
+           background: #f9f;
+           min-width: 300px;
+        }
+        input, button {
+           margin: 5px 0;
+           padding: 8px;
+           width: 100%;
+           box-sizing: border-box;
+        }
+        .link {
+           color: #007bff;
+           cursor: pointer;
+           text-decoration: underline;
+           font-size: 0.9em;
+        }
     </style>    
 </head>
 <body>
     <div id="welcome">
         <h1>Bem-vindo ao SAG - Sistema de Análise de Pareceres</h1>
     </div>
-
+    <div id="auth-container">
+        <!-- Formulário de Login -->
+        <form id="login-form">
+            <h2>Login</h2>
+            <input type="email" placeholder="E-mail" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+            <div>
+                <div>
+                <span class="link" onclick="showForgotPassword()">Esqueci minha senha</span> |
+                <span class="link" onclick="showRegister()">Cadastrar</span>
+            </div>
+        </form>
+        <!-- Formulário de Cadastro -->
+        <form id="register-form" style="display:none;"> 
+            <h2>Cadastrar</h2>
+            <input type="text" placeholder="Nome" required>
+            <input type="email" placeholder="E-mail" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit">Cadastrar</button>
+            <div>
+                <span class="link" onclick="showLogin()">Já tenho uma conta</span>
+            </div>
+        </form>
+        <!-- Formulário de Recuperação de Senha -->
+         <form id="forgot-form" style="display: none;">
+            <h2>Recuperar Senha</h2>
+            <input type="email" placeholder="E-mail" required>
+            <button type="submit">Enviar Link de Recuperação</button>
+            <div>
+                <span class="link" onclick="showLogin()">Voltar ao Login</span>
+            </div>
+         </form>        
+    </div>
     <script>
         // Função para esconder a tela de boas-vindas após 3 segundos
         window.onload = function() {
@@ -34,7 +97,22 @@
                 document.getElementById('welcome').classList.add('hide');
             }, 3000); // 3000 milissegundos = 3 segundos
         };
+        // Função para mostrar o container de autenticação
+        function showRegister() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('forgot-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        }
+        function showLogin() {
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('forgot-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'none';
+        }
+        function showForgotPassword() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('forgot-form').style.display = 'block';
+        }
     </script>
-    
 </body>
 </html>
