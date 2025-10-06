@@ -1,0 +1,29 @@
+/* Exemplo de estilos para aplicar cores */
+/* filepath: c:\Users\Joseh\OneDrive\Área de Trabalho\SAG2\index.html */
+/* ...existing code... */
+body {
+    background: #f0f4f8; /* Cor de fundo da página */
+}
+#welcome {
+    background: #1976d2; /* Fundo azul para a tela de boas-vindas */
+    color: #fff;         /* Texto branco */
+}
+form {
+    background: #fff;    /* Fundo branco para os formulários */
+    border: 1px solid #1976d2; /* Borda azul */
+}
+button {
+    background: #1976d2; /* Botão azul */
+    color: #fff;         /* Texto branco */
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+button:hover {
+    background: #1565c0; /* Azul mais escuro ao passar o mouse */
+}
+.link {
+    color: #1976d2;      /* Links azuis */
+}
+/* ...existing code... */
