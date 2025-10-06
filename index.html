@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" thref="styles.css">
+    <title>SAG - Sistema de Análise de Pareceres</title>
+    <style>
+        /* Estilos básicos para o corpo da página */
+        #welcome {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: center;
+            z-index: 9999;
+        }
+        #welcome.hide {
+            display: none;
+        }
+    </style>    
+</head>
+<body>
+    <div id="welcome">
+        <h1>Bem-vindo ao SAG - Sistema de Análise de Pareceres</h1>
+    </div>
+
+    <script>
+        // Função para esconder a tela de boas-vindas após 3 segundos
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('welcome').classList.add('hide');
+            }, 3000); // 3000 milissegundos = 3 segundos
+        };
+    </script>
+    
+</body>
+</html>
