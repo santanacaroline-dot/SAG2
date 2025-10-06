@@ -103,17 +103,92 @@
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('forgot-form').style.display = 'none';
             document.getElementById('register-form').style.display = 'block';
+            clearErrors();
         }
         function showLogin() {
             document.getElementById('register-form').style.display = 'block';
             document.getElementById('forgot-form').style.display = 'none';
             document.getElementById('login-form').style.display = 'none';
+            clearErrors
         }
         function showForgotPassword() {
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('register-form').style.display = 'none';
             document.getElementById('forgot-form').style.display = 'block';
+            clearErrors();
         }
+         // Limpa mensagens de erro ou estados anteriores, se houver
+        function clearErrors() {
+            document.querySelectorAll('.error').forEach(function(el){
+                el.style.display = 'none';
+            });
+        }    
+        // Validação dos formulários
+        document.getElementById('login-form').onsubmit = function(e) {
+        e.preventDefault();
+        clearErrors();
+        const email = this.querySelector('input[type="email"]').value.trim();
+        const senha = this.querySelector('input[type="password"]').value.trim();
+        let valid = true;
+        if (!email.match(/^[^@]+@[^@]+\.[^@]+$/)) {
+            showError(this, "E-mail inválido.");
+            valid = false;
+        }
+        if (senha.length < 6) {
+            showError(this, "A senha deve ter pelo menos 6 caracteres.");
+            valid = false;
+        }
+        if (valid) {
+            alert("Login realizado com sucesso (simulação)!");
+            // Aqui você pode redirecionar ou fazer login real
+        }
+        };
+        document.getElementById('register-form').onsubmit = function(e) {
+        e.preventDefault();
+        clearErrors();
+        const nome = this.querySelector('input[type="text"]').value.trim();
+        const email = this.querySelector('input[type="email"]').value.trim();
+        const senha = this.querySelector('input[type="password"]').value.trim();
+        let valid = true;
+        if (nome.length < 3) {
+            showError(this, "Nome deve ter pelo menos 3 letras.");
+            valid = false;
+        }
+        if (!email.match(/^[^@]+@[^@]+\.[^@]+$/)) {
+            showError(this, "E-mail inválido.");
+            valid = false;
+        }
+        if (senha.length < 6) {
+            showError(this, "A senha deve ter pelo menos 6 caracteres.");
+            valid = false;
+        }
+        if (valid) {
+            alert("Cadastro realizado com sucesso (simulação)!");
+            showLogin();
+        }
+    };
+
+    document.getElementById('forgot-form').onsubmit = function(e) {
+        e.preventDefault();
+        clearErrors();
+        const email = this.querySelector('input[type="email"]').value.trim();
+        if (!email.match(/^[^@]+@[^@]+\.[^@]+$/)) {
+            showError(this, "E-mail inválido.");
+        } else {
+            alert("Link de recuperação enviado (simulação)!");
+            showLogin();
+        }
+    };
+    function showError(form, message) {
+        let error = form.querySelector('.error-message');
+        if (!error) {
+            error = document.createElement('div');
+            error.className = 'error-message';
+            form.insertBefore(error, form.firstChild);
+        }
+        error.textContent = message;
+        error.style.display = 'block';
+    }   
     </script>
 </body>
 </html>
