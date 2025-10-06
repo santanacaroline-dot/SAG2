@@ -35,7 +35,7 @@
            padding: 20px;
            border: 1px solid #ccc;
            border-radius: 8px;
-           background: #f9f;
+           background: #f9f9f9;
            min-width: 300px;
         }
         input, button {
@@ -95,6 +95,7 @@
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById('welcome').classList.add('hide');
+                document.getElementById('auth-container').classList.add('active');
             }, 3000); // 3000 milissegundos = 3 segundos
         };
         // Função para mostrar o container de autenticação
